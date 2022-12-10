@@ -32,13 +32,20 @@
             <div class="col-md-12">
                 <div class="navbar-collapse collapse ">
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
-                        <li><a href="home.php" class="menu-top-active">HOME</a></li>
-                        <li><a href="dashboard.php" class="menu-top-active">DASHBOARD</a></li>
-
 
                         <li>
-                            <a href="#" class="dropdown-toggle menu-top-active" id="ddlmenuItem" data-toggle="dropdown">
-                                Account <i class="fa fa-angle-down"></i></a>
+                            <a style="font-size:16px;color: white;" href="http://127.0.0.1:5000/"
+                                class="menu-top-active">HOME</a>
+                        </li>
+                        <li>
+                            <a style="font-size:16px;color: white;"
+                                href="http://localhost/Online-Library-Management/onlinelibrary/dashboard.php"
+                                class="menu-top-active">DASHBOARD</a>
+                        </li>
+                        <li>
+                            <a href="#" style="font-size:16px;color: white;" class="dropdown-toggle menu-top-active"
+                                id="ddlmenuItem" data-toggle="dropdown">
+                                ACCOUNT <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu menu-top-active" role="menu" aria-labelledby="ddlmenuItem">
                                 <li role="presentation "><a class="menu-top-active" role="menuitem" tabindex="-1"
                                         href="my-profile.php">My Profile</a></li>
@@ -46,9 +53,15 @@
                                         href="change-password.php">Change Password</a></li>
                             </ul>
                         </li>
+                        <li>
+                            <a style="font-size:16px;color: white" href="http://127.0.0.1:5000/recommend"
+                                class="menu-top-active">RECOMMENDED
+                                BOOKS</a>
+                        </li>
 
 
-
+                    </ul>
+                    </li>
                     </ul>
                 </div>
             </div>

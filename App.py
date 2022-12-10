@@ -1,3 +1,4 @@
+import os
 from flask import Flask,render_template,request
 import pickle
 import numpy as np
@@ -10,15 +11,18 @@ similarity_scores=pickle.load(open('similarity_scores.pkl','rb'))
 
 app=Flask(__name__)
 
+
 @app.route('/')
 
 def index():
+    rat=list(polular_df['avg_rating'].values)
+    r=round(rat,2)
     return render_template('index.html',
     book_name=list(polular_df['Book-Title'].values),
     author=list(polular_df['Book-Author'].values),
     image=list(polular_df['Image-URL-M'].values),
     votes=list(polular_df['num_ratings'].values),
-    rating=list(polular_df['avg_rating'].values))
+    rating=r)
 
 @app.route('/recommend')  
 

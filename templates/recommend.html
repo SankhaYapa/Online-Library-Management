@@ -4,13 +4,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Recommender System</title>
     <!-- BOOTSTRAP CORE STYLE  -->
-    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
-    <link href="font-awesome.css" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/font-awesome.css') }}" rel="stylesheet" />
     <!-- CUSTOM STYLE  -->
-    <link href="/templates/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Font Awesome Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- GOOGLE FONT -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
 </head>
 <style>
@@ -22,6 +24,10 @@
     .navbar {
         min-height: 80px;
         margin-bottom: 0px;
+    }
+    
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(90, 2, 2, 0.548);
     }
     
     .navbar-inverse {
@@ -43,6 +49,11 @@
     #menu-top a:hover {
         color: #000;
     }
+    
+    .checked {
+        color: orange;
+        font-size: 12px;
+    }
 </style>
 
 <body>
@@ -54,7 +65,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-                <!-- <img class="logo" style="width: 350px; heigth: 130px" src="templates/assets/img/logo.png" /> -->
+                <img class="logo" style="width: 350px; heigth: 130px" src="{{url_for('static', filename='logo.png')}}" />
                 <a class="navbar-brand">
                     <!-- </a>
                            <h4 class="name">Trincomalee Campus Eastern University Sri Lanka </h4> -->
@@ -62,7 +73,7 @@
             </div>
 
             <div class="right-div">
-                <a href="http://localhost/book%20recomender%20web/onlineLibraryManagementSystem/" class="btn btn-danger pull-right">LOG ME OUT</a
+                <a href="http://localhost/Online-Library-Management/onlinelibrary/index.php" class="btn btn-danger pull-right">LOG ME OUT</a
           >
         </div>
       </div>
@@ -73,34 +84,36 @@
           <div class="col-md-12">
             <div class="navbar-collapse collapse">
               <ul id="menu-top" class="nav navbar-nav navbar-right">
+
                 <li>
-                  <a style="font-size:16px;color: white;"
-                    href="http://localhost/Online-Library-Management/onlinelibrary/home.php"
-                    class="menu-top-active"
-                    >HOME</a
-                  >
+                    <a style="font-size:16px;color: white;" href="http://127.0.0.1:5000/"
+                        class="menu-top-active">HOME</a>
                 </li>
                 <li>
-                    <a style="font-size:16px;color: white;"
-                      href="/"
-                      class="menu-top-active"
-                      >TOP BOOKS</a
-                    >
-                  </li>
+                    <a style="font-size:16px;color: white" href="http://127.0.0.1:5000/recommend" class="menu-top-active">RECOMMENDED
+                      BOOKS</a>
+                </li>
                 <li>
-                  <a style="font-size:16px;color: white" href="/recommend" class="menu-top-active"
-                    >RECOMMENDED BOOKS</a
-                  >
+                    <a style="font-size:16px;color: white;" href="http://localhost/Online-Library-Management/onlinelibrary/dashboard.php" class="menu-top-active">DASHBOARD</a>
+                </li>
+                <li>
+                    <a href="#" style="font-size:16px;color: white;" class="dropdown-toggle menu-top-active" id="ddlmenuItem" data-toggle="dropdown">
+                        ACCOUNT <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-menu menu-top-active" role="menu" aria-labelledby="ddlmenuItem">
+                        <li role="presentation "><a class="menu-top-active" role="menuitem" tabindex="-1" href="my-profile.php">My Profile</a></li>
+                        <li role="presentation"><a class="menu-top-active" role="menuitem" tabindex="-1" href="change-password.php">Change Password</a></li>
+                    </ul>
                 </li>
 
-             
-                  </ul>
+
+
+                </ul>
                 </li>
-              </ul>
+                </ul>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+    </div>
     </section>
 
     <div class="container">
@@ -117,8 +130,9 @@
             <div class="col-md-3" style="margin-top: 30px">
                 <div class="card">
                     <div class="card-body">
-                        <img style="font-weight: bold; text-align: center," class="card-img-top" src="{{i[2]}}" alt=" " />
-                        <p class="text-white">{{i[0]}}</p>
+                        <img style="font-weight: bold; text-align: center;width: 100%;height: 200px;" class="card-img-top" src="{{i[2]}}" alt=" " />
+                        <h5 style="font-weight: 600;">{{i[0]}}</h5>
+
                         <p class="text-white">{{i[1]}}</p>
                     </div>
                 </div>

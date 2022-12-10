@@ -102,13 +102,13 @@ $returnedbooks=$query2->rowCount();
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-3 col-xs-6" onclick="location.href='http://127.0.0.1:5000';">
+                <!-- <div class="col-md-3 col-sm-3 col-xs-6" onclick="location.href='http://127.0.0.1:5000';">
                     <div class="alert alert-success back-widget-set text-center">
                         <i class="fa fa-book fa-5x"></i>
-
+                        <h3>&nbsp;</h3>
                         Recommended Books
                     </div>
-                </div>
+                </div> -->
 
 
 

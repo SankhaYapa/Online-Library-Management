@@ -28,7 +28,7 @@ if($query->rowCount() > 0)
 if($result->Status==1)
 {
 $_SESSION['login']=$_POST['emailid'];
-echo "<script type='text/javascript'> document.location ='home.php'; </script>";
+echo "<script type='text/javascript'> document.location ='http://127.0.0.1:5000/'; </script>";
 } else {
 echo "<script>alert('Your Account Has been blocked .Please contact admin');</script>";
 
@@ -44,7 +44,7 @@ echo "<script>alert('Invalid Details');</script>";
 }
 ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
     <meta charset="utf-8" />
