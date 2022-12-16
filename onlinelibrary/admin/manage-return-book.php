@@ -95,16 +95,17 @@ else{
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Borrower Name</th>
-                                            <th>Book Name</th>
-                                            <th>ISBN </th>
+                                            <th>Book Id</th>
+                                            <th>Student Id</th>
+
                                             <th>Issued Date</th>
                                             <th>Return Date</th>
-                                            <th>Action</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $sql = "SELECT tblstudents.FullName,tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as rid from  tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId join tblbooks on tblbooks.id=tblissuedbookdetails.BookId order by tblissuedbookdetails.id desc";
+                                        <?php  $sql="SELECT tblissuedbookdetails.BookId,tblissuedbookdetails.StudentID,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate from tblissuedbookdetails  where RetrunStatus=1";
+                                        // $sql = "SELECT tblstudents.FullName,tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as rid from  tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId join tblbooks on tblbooks.id=tblissuedbookdetails.BookId  where RetrunStatus=1 order by tblissuedbookdetails.id desc ";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -115,9 +116,8 @@ foreach($results as $result)
 {               ?>
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
-                                            <td class="center"><?php echo htmlentities($result->FullName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->BookName);?></td>
-                                            <td class="center"><?php echo htmlentities($result->ISBNNumber);?></td>
+                                            <td class="center"><?php echo htmlentities($result->BookId);?></td>
+                                            <td class="center"><?php echo htmlentities($result->StudentID);?></td>
                                             <td class="center"><?php echo htmlentities($result->IssuesDate);?></td>
                                             <td class="center"><?php if($result->ReturnDate=="")
                                             {
@@ -128,14 +128,14 @@ foreach($results as $result)
                                             echo htmlentities($result->ReturnDate);
 }
                                             ?></td>
-                                            <td class="center">
+                                            <!-- <td class="center">
 
                                                 <a
                                                     href="update-issue-bookdeails.php?rid=<?php echo htmlentities($result->rid);?>"><button
                                                         class="btn btn-primary"><i class="fa fa-edit "></i>
                                                         Edit</button>
 
-                                            </td>
+                                            </td> -->
                                         </tr>
                                         <?php $cnt=$cnt+1;}} ?>
                                     </tbody>

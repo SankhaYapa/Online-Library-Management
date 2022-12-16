@@ -143,7 +143,14 @@ foreach($results as $result)
                                             $your_date = strtotime($endDate);
                                             $datediff =  $your_date-$now;
                                             
-                                             echo round($datediff / (60 * 60 * 24));
+                                            if(round($datediff / (60 * 60 * 24))<0){
+                                                echo round($datediff / (60 * 60 * 24))." out of date";
+                                            }
+                                            else
+                                            {
+                                                echo round($datediff / (60 * 60 * 24))." days more";
+                                            }
+                                            
                                             
                                      
                                         

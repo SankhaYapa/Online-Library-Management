@@ -94,6 +94,15 @@ foreach($results as $result)
                                     <label>Reg Date : </label>
                                     <?php echo htmlentities($result->RegDate);?>
                                 </div>
+
+
+                                <script>
+                                // Set Item
+                                localStorage.setItem("$result - > StudentId");
+                                // Retrieve
+                                // document.getElementById("demo").innerHTML = localStorage.getItem("lastname");
+                                </script>
+
                                 <?php if($result->UpdationDate!=""){?>
                                 <div class="form-group">
                                     <label>Last Updation Date : </label>

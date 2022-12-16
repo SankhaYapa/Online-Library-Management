@@ -158,7 +158,7 @@ foreach($results as $result)
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Fine (in USD) :</label>
+                                    <label>Fine (in Rs) :</label>
                                     <?php 
 if($result->fine=="")
 {?>
