@@ -30,28 +30,6 @@ if ($_POST["vercode"] != $_SESSION["vercode"] OR $_SESSION["vercode"]=='')  {
     $selectedyear=$_POST['year'];
     $password=$_POST['password']; 
 
-// Validate password strength
-$uppercase = preg_match('@[A-Z]@', $password);
-$lowercase = preg_match('@[a-z]@', $password);
-$number    = preg_match('@[0-9]@', $password);
-
-
-if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
-    $passworderror= 'Password not strong';
-    echo "<script>alert('Password not strong');</script>" ;
-    $fname=$_POST['fullanme'];  
-    $mobileno=$_POST['mobileno'];
-    $email=$_POST['email']; 
-    $occupation=$_POST['occupation'];
-    $selectedfaculty="";
-    $selecteddepartment="";
-    $selectedyear="";
-    $selectedfaculty=$_POST['faculty'];
-    $selecteddepartment=$_POST['department'];
-    $selectedyear=$_POST['year'];
-}else{
-   
-
     $status=1;
     $sql="INSERT INTO  tblstudents(StudentId,FullName,MobileNumber,EmailId,Occupation,Faculty,Department,Year,Password,Status) VALUES(:StudentId,:fname,:mobileno,:email,:occupation,:selectedfaculty,:selecteddepartment,:selectedyear,:password,:status)";
     $query = $dbh->prepare($sql);
@@ -77,7 +55,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 }
 }
 }
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -154,7 +132,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
                                 <div class="form-group">
                                     <label>Enter Full Name</label><span style="color:red;">*</span>
                                     <input class="form-control" type="text" name="fullanme" autocomplete="off"
-                                        pattern="[a-zA-Z]{1,}" required />
+                                        pattern="[a-zA-Z ,.]+" required />
                                 </div>
 
 
@@ -231,25 +209,44 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
 
                                 var check = function() {
                                     var pw = document.getElementById("myInput1").value;
+                                    var cw = document.getElementById("confirm_password").value;
+
 
                                     if (pw == "") {
                                         document.getElementById("message").innerHTML = "**Fill the password!";
+                                        submit.disabled = true
                                         return false;
                                     }
+
                                     if (pw.length < 8) {
                                         document.getElementById("message").innerHTML =
                                             "** length must be atleast 8 characters";
+                                        submit.disabled = true
                                         return false;
                                     }
                                     if (pw.length > 15) {
                                         document.getElementById("message").innerHTML =
                                             "** length must not exceed 15 characters";
+                                        submit.disabled = true
                                         return false;
                                     } else {
                                         document.getElementById("message").innerHTML =
                                             "Password is correct ";
+                                        submit.disabled = true
 
                                     }
+                                    if (pw != cw) {
+                                        document.getElementById("cmessage").innerHTML =
+                                            "**Not match for the password!";
+                                        submit.disabled = true
+                                        return false;
+                                    }
+                                    if (pw == cw) {
+                                        document.getElementById("cmessage").innerHTML = "";
+                                        submit.disabled = false
+                                        return false;
+                                    }
+
                                 }
 
 
@@ -286,7 +283,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
                                     <label>Confirm Password </label><span style="color:red;">*</span>
                                     <input class="form-control" type="password" name="confirmpassword"
                                         id="confirm_password" autocomplete="off" required onkeyup='check();' />
-                                    <span id='message'></span>
+                                    <span id='cmessage' style="color:red"></span>
                                 </div>
                                 <div class="form-group">
                                     <label>Verification code : </label>

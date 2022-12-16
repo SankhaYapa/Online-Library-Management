@@ -51,7 +51,7 @@ else{?>
                         <i class="fa fa-bars fa-5x"></i>
                         <?php 
 $sid=$_SESSION['stdid'];
-$sql1 ="SELECT id from tblissuedbookdetails where StudentID=:sid";
+$sql1 ="SELECT id from tblissuedbookdetails where StudentID=:sid and ";
 $query1 = $dbh -> prepare($sql1);
 $query1->bindParam(':sid',$sid,PDO::PARAM_STR);
 $query1->execute();

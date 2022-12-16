@@ -100,11 +100,13 @@ else{
 
                                             <th>Issued Date</th>
                                             <th>Return Date</th>
+                                            <th>Fine</th>
+
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php  $sql="SELECT tblissuedbookdetails.BookId,tblissuedbookdetails.StudentID,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate from tblissuedbookdetails  where RetrunStatus=1";
+                                        <?php  $sql="SELECT tblissuedbookdetails.BookId,tblissuedbookdetails.StudentID,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.fine from tblissuedbookdetails  where RetrunStatus=1";
                                         // $sql = "SELECT tblstudents.FullName,tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as rid from  tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId join tblbooks on tblbooks.id=tblissuedbookdetails.BookId  where RetrunStatus=1 order by tblissuedbookdetails.id desc ";
 $query = $dbh -> prepare($sql);
 $query->execute();
@@ -136,6 +138,7 @@ foreach($results as $result)
                                                         Edit</button>
 
                                             </td> -->
+                                            <td class="center"><?php echo htmlentities($result->fine);?></td>
                                         </tr>
                                         <?php $cnt=$cnt+1;}} ?>
                                     </tbody>

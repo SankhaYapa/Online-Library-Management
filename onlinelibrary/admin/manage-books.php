@@ -332,7 +332,7 @@ $results=$query->fetchAll(PDO::FETCH_OBJ);
 $cnt=1;
 
 
-$sq="SELECT BookId FROM tblissuedbookdetails";
+$sq="SELECT BookId,count(BookId) FROM tblissuedbookdetails group by BookId";
 $q=$dbh -> prepare($sq);
 $q->execute();
 $r=$q->fetchAll(PDO::FETCH_OBJ);
@@ -370,16 +370,25 @@ foreach($results as $result)
                                                     src="image/<?php echo htmlentities($result->BookImage);?>"
                                                     width="75px" height="75px">
                                             </td>
+
+
+
+
                                             <td class="center">
+
                                                 <?php 
-                                                if($B==htmlentities($result->id)){
+                                               
+                                                if(0>=htmlentities($result->NoOfBooks)){
                                                     ?>
                                                 <a href="#" class="btn btn-danger btn-xs">Not Available</a>
                                                 <?php
                                                 }
                                                 else{
                                                     ?>
-                                                <a href="#" class="btn btn-success btn-xs">Available</a>
+                                                <a href="#" class="btn btn-success btn-xs">
+                                                    Available
+                                                    <!-- <?php echo $B?> -->
+                                                </a>
                                                 <?php
                                                 }
 

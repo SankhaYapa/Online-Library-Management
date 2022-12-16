@@ -38,6 +38,11 @@
                                 class="menu-top-active">HOME</a>
                         </li>
                         <li>
+                            <a style="font-size:16px;color: white" href="http://127.0.0.1:5000/recommend"
+                                class="menu-top-active">RECOMMENDED
+                                BOOKS</a>
+                        </li>
+                        <li>
                             <a style="font-size:16px;color: white;"
                                 href="http://localhost/Online-Library-Management/onlinelibrary/dashboard.php"
                                 class="menu-top-active">DASHBOARD</a>
@@ -53,11 +58,7 @@
                                         href="change-password.php">Change Password</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a style="font-size:16px;color: white" href="http://127.0.0.1:5000/recommend"
-                                class="menu-top-active">RECOMMENDED
-                                BOOKS</a>
-                        </li>
+
 
 
                     </ul>

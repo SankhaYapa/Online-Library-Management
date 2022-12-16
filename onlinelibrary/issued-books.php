@@ -70,8 +70,9 @@ header('location:manage-books.php');
                                                 <th>Book Name</th>
                                                 <th>ISBN </th>
                                                 <th>Issued Date</th>
-                                                <!-- <th>Return Date</th>
-                                                <th>Fine in(USD)</th> -->
+
+                                                <th>Return Date</th>
+                                                <th>Fine in(USD)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -92,7 +93,7 @@ foreach($results as $result)
                                                 <td class="center"><?php echo htmlentities($result->BookName);?></td>
                                                 <td class="center"><?php echo htmlentities($result->ISBNNumber);?></td>
                                                 <td class="center"><?php echo htmlentities($result->IssuesDate);?></td>
-                                                <!-- <td class="center"><?php if($result->ReturnDate=="")
+                                                <td class="center"><?php if($result->ReturnDate=="")
                                             {?>
                                                     <span style="color:red">
                                                         <?php   echo htmlentities("Not Return Yet"); ?>
@@ -102,7 +103,7 @@ foreach($results as $result)
                                         }
                                             ?>
                                                 </td>
-                                                <td class="center"><?php echo htmlentities($result->fine);?></td> -->
+                                                <td class="center"><?php echo htmlentities($result->fine);?></td>
 
                                             </tr>
                                             <?php $cnt=$cnt+1;}} ?>

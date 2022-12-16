@@ -154,7 +154,7 @@ $listdbooks=$query->rowCount();
                     <div class="alert alert-success back-widget-set text-center">
                         <img style="width:60px;height:70px;" src="assets/img/listed.png">
                         <?php 
-$sql1 ="SELECT id from tblissuedbookdetails ";
+$sql1 ="SELECT id from tblissuedbookdetails where RetrunStatus=0 ";
 $query1 = $dbh -> prepare($sql1);
 $query1->execute();
 $results1=$query1->fetchAll(PDO::FETCH_OBJ);

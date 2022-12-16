@@ -123,6 +123,7 @@ foreach($results as $result)
 
 
                                 <div class="form-group">
+
                                     <label>Student Name :</label>
                                     <?php echo htmlentities($result->FullName);?>
                                 </div>
@@ -162,9 +163,10 @@ foreach($results as $result)
                                     <?php 
 if($result->fine=="")
 {?>
-                                    <input class="form-control" type="text" name="fine" id="fine" required />
+                                    <input class="form-control" type="text" name="fine" id="fine" />
 
-                                    <?php }else {
+                                    <?php }
+                                    else {
 echo htmlentities($result->fine);
 }
 ?>
@@ -176,7 +178,8 @@ echo htmlentities($result->fine);
 
                         </div>
 
-                        <?php }}} ?>
+                        <?php }
+                    }} ?>
                         </form>
                     </div>
                 </div>
