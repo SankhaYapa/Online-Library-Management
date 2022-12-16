@@ -88,7 +88,7 @@ $returnedbooks=$query2->rowCount();
                         <i class="fa fa-book fa-5x"></i>
                         <?php 
 $rsts=0;
-$sql2 ="SELECT id from tblissuedbookdetails where StudentID=:sid and RetrunStatus=:rsts";
+$sql2 ="SELECT id from tblbooks";
 $query2 = $dbh -> prepare($sql2);
 $query2->bindParam(':sid',$sid,PDO::PARAM_STR);
 $query2->bindParam(':rsts',$rsts,PDO::PARAM_STR);

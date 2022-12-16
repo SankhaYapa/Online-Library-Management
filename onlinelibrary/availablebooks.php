@@ -40,7 +40,11 @@ header('location:manage-books.php');
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
+    <style>
+    label {
+        display: none;
+    }
+    </style>
 
 </head>
 
@@ -78,9 +82,9 @@ header('location:manage-books.php');
                     function SearchData(country, age, auth) {
                         if (country.toUpperCase() == 'ALL' && age.toUpperCase() == 'ALL' && auth.toUpperCase() ==
                             'ALL') {
-                            $('#table11 tbody tr').show();
+                            $('#dataTables-example tbody tr').show();
                         } else {
-                            $('#table11 tbody tr:has(td)').each(function() {
+                            $('#dataTables-example tbody tr:has(td)').each(function() {
                                 var rowCountry = $.trim($(this).find('td:eq(1)').text());
                                 var rowAge = $.trim($(this).find('td:eq(2)').text());
                                 var rowAuth = $.trim($(this).find('td:eq(3)').text());
@@ -128,7 +132,7 @@ header('location:manage-books.php');
                         var input, filter, table, tr, td, i, txtValue;
                         input = document.getElementById("myInput");
                         filter = input.value.toUpperCase();
-                        table = document.getElementById("table11");
+                        table = document.getElementById("dataTables-example");
                         tr = table.getElementsByTagName("tr");
                         for (i = 0; i < tr.length; i++) {
                             td = tr[i].getElementsByTagName("td")[0];
@@ -221,7 +225,7 @@ header('location:manage-books.php');
 
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-hover" id="table11">
+                                <table class="table table-striped table-hover" id="dataTables-example">
                                     <thead class="col">
                                         <tr>
                                             <th>#</th>

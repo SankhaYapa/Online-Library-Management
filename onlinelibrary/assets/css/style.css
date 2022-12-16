@@ -458,3 +458,10 @@ input#myInput {
     align-items: center;
     display: flex;
 }
+
+.div.dataTables_filter label {
+    float: right;
+    font-weight: normal;
+    display: none;
+    visibility: hidden;
+}
